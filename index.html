@@ -21,7 +21,6 @@
             --border-color: #eee;
         }
 
-        /* --- DARK MODE VARIABLES --- */
         [data-theme="dark"] {
             --primary: #ef5350;
             --secondary: #121212;
@@ -36,7 +35,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--secondary); color: var(--text-dark); transition: background-color 0.3s, color 0.3s; }
 
-        /* Header & Navigation */
         header { background: var(--header-bg); color: white; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.3s; }
         .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .logo { font-size: 1.5em; font-weight: bold; display: flex; align-items: center; gap: 12px; }
@@ -46,7 +44,6 @@
         .admin-btn { background-color: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 8px 15px; border-radius: 20px; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9em; }
         .admin-btn:hover { background-color: white; color: var(--primary); }
 
-        /* Icon Controls (Theme, Lang) */
         .icon-btn { padding: 8px 12px; }
 
         /* Notifications */
@@ -60,14 +57,12 @@
         .noti-header h4 { margin: 0; font-size: 1em; color: var(--primary); }
         .noti-body { max-height: 300px; overflow-y: auto; }
         
-        /* Cập nhật style cho Notification item để chứa nút xóa */
         .noti-item { padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 0.9em; position: relative; padding-right: 35px; }
         .noti-item:last-child { border-bottom: none; }
         .noti-item.unread { background: rgba(198, 40, 40, 0.05); border-left: 3px solid var(--primary); }
         [data-theme="dark"] .noti-item.unread { background: rgba(239, 83, 80, 0.1); }
         .noti-date { font-size: 0.8em; color: var(--text-light); margin-top: 5px; display: block; }
         
-        /* Nút xóa thông báo (chỉ Admin) */
         .btn-delete-noti { display: none; position: absolute; right: 10px; top: 12px; color: var(--danger); cursor: pointer; background: none; border: none; font-size: 1.1em; transition: 0.2s; }
         .admin-mode .btn-delete-noti { display: block; }
         .btn-delete-noti:hover { color: #a71d2a; transform: scale(1.1); }
@@ -79,11 +74,9 @@
         .cat-btn { padding: 8px 15px; border-radius: 20px; border: none; background: var(--bg-card); color: var(--text-light); cursor: pointer; font-weight: 500; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: 0.3s; }
         .cat-btn.active, .cat-btn:hover { background: var(--primary); color: white; }
 
-        /* Main Grid */
         .container { max-width: 1200px; margin: 0 auto 40px; padding: 0 20px; }
         .simulation-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
         
-        /* Card Styles */
         .sim-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; position: relative; cursor: pointer; display: flex; flex-direction: column; }
         .sim-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
         .sim-img { width: 100%; height: 160px; object-fit: cover; background: #eee; }
@@ -91,7 +84,6 @@
         .sim-title { font-size: 1.1em; font-weight: bold; margin-bottom: 10px; color: var(--primary); }
         .sim-category { font-size: 0.8em; padding: 4px 10px; border-radius: 12px; display: inline-block; font-weight: bold; align-self: flex-start; }
         
-        /* Category Colors */
         .cat-VậtLý { background: rgba(21, 101, 192, 0.1); color: #1565c0; }
         .cat-HóaHọc { background: rgba(216, 67, 21, 0.1); color: #d84315; }
         .cat-SinhHọc { background: rgba(46, 125, 50, 0.1); color: #2e7d32; }
@@ -102,14 +94,12 @@
         [data-theme="dark"] .cat-HóaHọc { color: #ff8a65; }
         [data-theme="dark"] .cat-SinhHọc { color: #81c784; }
 
-        /* Admin Controls */
         .admin-controls { display: none; padding: 10px 15px; background: rgba(0,0,0,0.02); border-top: 1px solid var(--border-color); justify-content: space-between; }
         .admin-mode .admin-controls { display: flex; }
         .btn-edit, .btn-delete { padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; color: white; font-size: 0.9em; }
         .btn-edit { background: var(--warning); color: #000; }
         .btn-delete { background: var(--danger); }
 
-        /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(3px); }
         .modal { background: var(--bg-modal); color: var(--text-dark); padding: 25px; border-radius: 12px; width: 90%; max-width: 450px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; max-height: 90vh; overflow-y: auto; }
         .modal-close { position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 1.2em; color: var(--text-light); transition: 0.2s; }
@@ -123,11 +113,9 @@
         .btn-submit { width: 100%; padding: 12px; background: var(--success); color: white; border: none; border-radius: 6px; font-size: 1em; font-weight: bold; cursor: pointer; }
         .btn-submit:hover { background: #218838; }
 
-        /* Toast */
-        #toast { position: fixed; bottom: 20px; right: 20px; background: var(--text-dark); color: var(--bg-card); padding: 12px 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 3000; }
+        #toast { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 3000; max-width: 350px; font-weight: 500;}
         #toast.show { transform: translateY(0); opacity: 1; }
 
-        /* Nav Tabs */
         .main-nav { display: flex; justify-content: center; gap: 20px; background: var(--bg-card); padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; transition: 0.3s; }
         .tab-btn { background: transparent; border: none; font-size: 1.1em; font-weight: bold; padding: 10px 20px; cursor: pointer; color: var(--text-light); border-bottom: 3px solid transparent; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
         .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
@@ -139,14 +127,12 @@
         .checkbox-group label:hover { background: rgba(0,0,0,0.08); }
         .categories-container { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
 
-        /* Home Hero */
         .home-hero { display: flex; align-items: center; justify-content: space-between; gap: 40px; background: var(--bg-card); padding: 60px 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 40px; flex-wrap: wrap; border: 1px solid var(--border-color); }
         .hero-text { flex: 1; min-width: 300px; }
         .hero-text h1 { color: var(--primary); font-size: 3em; margin-bottom: 20px; line-height: 1.2; }
         .hero-text p { font-size: 1.2em; color: var(--text-light); line-height: 1.6; margin-bottom: 30px; }
         .hero-visual { flex: 1; text-align: center; min-width: 300px; position: relative; }
         
-        /* Subjects Animation */
         .subject-icons-container { position: relative; height: 280px; display: flex; justify-content: center; align-items: center; }
         .subject-icons-container i { position: absolute; opacity: 0.85; animation: floatIcon 4s ease-in-out infinite; }
         .icon-physics { color: #1565c0; top: 10%; left: 15%; animation-delay: 0s; font-size: 3.5em; }
@@ -167,27 +153,17 @@
         .feature-card h3 { color: var(--text-dark); margin-bottom: 10px; font-size: 1.3em; }
         .feature-card p { color: var(--text-light); line-height: 1.5; }
 
-        /* Contact & Buttons Layout */
         .contact-layout { display: flex; flex-direction: column; gap: 30px; background: var(--bg-card); padding: 40px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
-        
         .contact-info h2, .idea-form h2 { color: var(--primary); margin-bottom: 20px; font-size: 1.8em; }
         .contact-info p, .idea-form p { color: var(--text-light); line-height: 1.6; margin-bottom: 25px; font-size: 1.1em; }
         
-        /* Cập nhật style cho các nút Zalo, Facebook, Form đồng bộ */
         .zalo-btn { display: inline-flex; align-items: center; gap: 15px; background: #0068ff; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2em; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,104,255,0.4); }
         .zalo-btn:hover { background: #0054cc; transform: scale(1.05); }
-        
         .facebook-btn { display: inline-flex; align-items: center; gap: 15px; background: #1877F2; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2em; transition: 0.3s; box-shadow: 0 4px 15px rgba(24,119,242,0.4); }
         .facebook-btn:hover { background: #166fe5; transform: scale(1.05); color: white; }
-        
         .form-btn { display: inline-flex; align-items: center; gap: 15px; background: #d93025; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2em; transition: 0.3s; box-shadow: 0 4px 15px rgba(217,48,37,0.4); border: none; cursor: pointer; }
         .form-btn:hover { background: #b3261d; transform: scale(1.05); color: white; }
 
-        /* Database Setup text */
-        .db-status { background-color: rgba(239, 83, 80, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 15px; font-size: 0.8em; font-weight: bold; display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; }
-        .db-status.connected { background-color: rgba(40, 167, 69, 0.1); color: var(--success); }
-
-        /* Footer */
         footer { background: var(--bg-card); padding: 25px 20px; text-align: center; border-top: 1px solid var(--border-color); color: var(--text-light); margin-top: auto; }
         footer p { font-weight: 500; }
         .footer-highlight { color: var(--primary); font-weight: bold; }
@@ -310,7 +286,6 @@
 
     <div id="contactTab" class="container tab-content">
         <div class="contact-layout">
-            <!-- PHẦN THÔNG TIN LIÊN HỆ -->
             <div class="contact-info">
                 <h2 class="lang-text" data-vi="<i class='fa-solid fa-address-book'></i> Thông tin liên hệ" data-en="<i class='fa-solid fa-address-book'></i> Contact Info">
                     <i class="fa-solid fa-address-book"></i> Thông tin liên hệ
@@ -319,7 +294,6 @@
                     Nếu bạn có bất kỳ câu hỏi nào về hệ thống mô phỏng, hoặc cần hỗ trợ kỹ thuật, hãy liên hệ trực tiếp với đội ngũ quản trị viên của chúng tôi.
                 </p>
                 <br>
-                <!-- Nhóm nút liên hệ xếp dọc -->
                 <div style="display: flex; flex-direction: column; gap: 15px; align-items: flex-start;">
                     <a href="https://zalo.me/0819161835" target="_blank" class="zalo-btn">
                         <i class="fa-solid fa-comment-dots"></i> Chat Zalo: 0819161835
@@ -333,7 +307,6 @@
                 </div>
             </div>
 
-            <!-- PHẦN ĐỀ XUẤT Ý TƯỞNG -->
             <div class="idea-form" style="margin-top: 10px;">
                 <h2 class="lang-text" data-vi="<i class='fa-solid fa-lightbulb'></i> Đề xuất ý tưởng" data-en="<i class='fa-solid fa-lightbulb'></i> Suggest Ideas">
                     <i class="fa-solid fa-lightbulb"></i> Đề xuất ý tưởng
@@ -342,7 +315,6 @@
                     Bạn muốn có thêm mô phỏng về chủ đề nào? Hãy cho chúng tôi biết thông qua biểu mẫu đề xuất nhé!
                 </p>
                 <br>
-                <!-- Nút Form bo góc xếp dọc giống Zalo/Facebook -->
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                     <a href="https://fomr.io/s/wSsnfUG4dL" target="_blank" class="form-btn">
                         <i class="fa-solid fa-pen-to-square"></i> Điền biểu mẫu đề xuất
@@ -430,25 +402,28 @@
         try { supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); useSupabase = true; } catch (err) {}
 
         let isAdmin = false; let currentCategory = 'All'; let uploadedImageBase64 = ""; let simulations = [];
+        let notifications = [];
+
         const defaultData = [
-            { id: 1, name: 'Cân bằng phương trình Hóa học', categories: ['Hóa Học'], link: 'https://phet.colorado.edu/vi/simulations/balancing-chemical-equations', image: 'https://phet.colorado.edu/sims/html/balancing-chemical-equations/latest/balancing-chemical-equations-600.png' },
-            { id: 2, name: 'Định luật Ohm', categories: ['Vật Lý'], link: 'https://phet.colorado.edu/vi/simulations/ohms-law', image: 'https://phet.colorado.edu/sims/html/ohms-law/latest/ohms-law-600.png' },
-            { id: 3, name: 'Tế bào thần kinh', categories: ['Sinh Học'], link: 'https://phet.colorado.edu/vi/simulations/neuron', image: 'https://phet.colorado.edu/sims/html/neuron/latest/neuron-600.png' }
+            { id: 1, name: 'Cân bằng phương trình Hóa học', categories: ['Hóa Học'], link: 'https://phet.colorado.edu/vi/simulations/balancing-chemical-equations', image: 'https://phet.colorado.edu/sims/html/balancing-chemical-equations/latest/balancing-chemical-equations-600.png' }
         ];
 
         let currentLang = localStorage.getItem('edu_lang') || 'vi';
         let currentTheme = localStorage.getItem('edu_theme') || 'light';
-        let notifications = JSON.parse(localStorage.getItem('edu_notifications')) || [];
         
         async function init() {
             applyTheme();
             applyLang();
-            renderNotifications();
+            await loadNotifications();
             await loadData();
             renderCards();
+
+            // Tự động tải lại thông báo từ máy chủ mỗi 30 giây
+            setInterval(() => {
+                loadNotifications();
+            }, 30000);
         }
 
-        // TÍNH NĂNG: Đổi Ngôn Ngữ
         function toggleLang() {
             currentLang = currentLang === 'vi' ? 'en' : 'vi';
             localStorage.setItem('edu_lang', currentLang);
@@ -461,12 +436,9 @@
                 }
             });
             document.getElementById('langLabel').innerText = currentLang.toUpperCase();
-            
-            const searchInput = document.getElementById('searchInput');
-            searchInput.placeholder = currentLang === 'vi' ? 'Tìm kiếm mô phỏng...' : 'Search simulations...';
+            document.getElementById('searchInput').placeholder = currentLang === 'vi' ? 'Tìm kiếm mô phỏng...' : 'Search simulations...';
         }
 
-        // TÍNH NĂNG: Giao diện Sáng/Tối
         function toggleTheme() {
             currentTheme = currentTheme === 'light' ? 'dark' : 'light';
             localStorage.setItem('edu_theme', currentTheme);
@@ -483,13 +455,55 @@
             }
         }
 
-        // TÍNH NĂNG: Hệ Thống Thông Báo
-        function toggleNotiPanel() {
-            const panel = document.getElementById('notiDropdown');
-            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-            if (panel.style.display === 'block') markAllRead();
+        // --- HỆ THỐNG THÔNG BÁO SUPABASE (GLOBAL) ---
+        async function loadNotifications() {
+            if (useSupabase) {
+                try {
+                    let { data, error } = await supabaseClient
+                        .from('notifications')
+                        .select('*')
+                        .order('created_at', { ascending: false })
+                        .limit(15);
+                    
+                    if (error) throw error;
+
+                    // Sử dụng parseInt để đảm bảo định dạng số học chuẩn xác
+                    let lastReadNotiId = parseInt(localStorage.getItem('edu_last_read_noti_id')) || 0;
+                    let notifiedLatestId = parseInt(localStorage.getItem('edu_notified_latest_id')) || 0;
+
+                    let hasNewAutoPopup = false;
+                    let newestNotiMessage = "";
+
+                    notifications = data.map((n, index) => {
+                        const isRead = n.id <= lastReadNotiId;
+                        
+                        // Nếu đây là thông báo mới nhất và lớn hơn ID đã popup trước đó
+                        if (index === 0 && n.id > lastReadNotiId && n.id > notifiedLatestId) {
+                            hasNewAutoPopup = true;
+                            newestNotiMessage = n.message;
+                            localStorage.setItem('edu_notified_latest_id', n.id);
+                        }
+
+                        return {
+                            id: n.id,
+                            text: n.message,
+                            date: new Date(n.created_at).toLocaleString('vi-VN'),
+                            read: isRead
+                        };
+                    });
+
+                    // Tính năng bật Popup nhắc nhở tự động cho tài khoản chưa đọc
+                    if (hasNewAutoPopup) {
+                        showToast("🔔 Thông báo mới: " + newestNotiMessage);
+                    }
+
+                } catch (err) {
+                    console.error("Lỗi tải thông báo từ Supabase:", err);
+                }
+            }
+            renderNotifications();
         }
-        
+
         function renderNotifications() {
             const list = document.getElementById('notiList');
             const badge = document.getElementById('notiBadge');
@@ -499,13 +513,13 @@
             if (notifications.length === 0) {
                 list.innerHTML = `<div style="padding: 20px; text-align:center; color:#999;">${currentLang === 'vi' ? 'Chưa có thông báo nào.' : 'No notifications yet.'}</div>`;
             } else {
-                notifications.forEach((noti, index) => {
+                notifications.forEach((noti) => {
                     if (!noti.read) unreadCount++;
                     list.innerHTML += `
                         <div class="noti-item ${!noti.read ? 'unread' : ''}">
                             <div>${noti.text}</div>
                             <span class="noti-date">${noti.date}</span>
-                            <button class="btn-delete-noti" onclick="deleteNotification(${index}); event.stopPropagation();" title="Xóa thông báo này">
+                            <button class="btn-delete-noti" onclick="deleteNotification(${noti.id}); event.stopPropagation();" title="Xóa thông báo này">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
@@ -520,38 +534,35 @@
                 badge.style.display = 'none';
             }
         }
-        
-        // TÍNH NĂNG MỚI: Xóa thông báo (Chỉ Admin)
-        function deleteNotification(index) {
-            if (confirm(currentLang === 'vi' ? 'Bạn có chắc chắn muốn xóa thông báo này?' : 'Are you sure you want to delete this notification?')) {
-                notifications.splice(index, 1); 
-                localStorage.setItem('edu_notifications', JSON.stringify(notifications));
-                renderNotifications();
-                showToast(currentLang === 'vi' ? 'Đã xóa thông báo!' : 'Notification deleted!');
-            }
-        }
 
+        function toggleNotiPanel() {
+            const panel = document.getElementById('notiDropdown');
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            if (panel.style.display === 'block') markAllRead();
+        }
+        
         function markAllRead() {
-            let changed = false;
-            notifications.forEach(n => { if (!n.read) { n.read = true; changed = true; } });
-            if (changed) {
-                localStorage.setItem('edu_notifications', JSON.stringify(notifications));
+            if (notifications.length > 0) {
+                localStorage.setItem('edu_last_read_noti_id', notifications[0].id);
+                localStorage.setItem('edu_notified_latest_id', notifications[0].id);
+                notifications.forEach(n => n.read = true);
                 renderNotifications();
             }
         }
 
-        function pushNotification(text) {
-            const newNoti = { text: text, date: new Date().toLocaleString('vi-VN'), read: false };
-            notifications.unshift(newNoti);
-            // Giới hạn 15 thông báo theo yêu cầu
-            if(notifications.length > 15) notifications.pop(); 
-            localStorage.setItem('edu_notifications', JSON.stringify(notifications));
-            renderNotifications();
-            showToast(currentLang === 'vi' ? 'Có thông báo mới!' : 'New notification!');
+        // Admin Đăng Thông báo lên Database
+        async function pushNotification(text) {
+            if (useSupabase) {
+                try {
+                    await supabaseClient.from('notifications').insert([{ message: text }]);
+                    await loadNotifications(); // Tải lại danh sách từ DB
+                    showToast(currentLang === 'vi' ? 'Đã đăng thông báo thành công!' : 'Notification posted!');
+                } catch (error) {
+                    showToast("Lỗi khi đăng thông báo lên Supabase!");
+                }
+            }
         }
 
-        function openAdminNotiModal() { document.getElementById('adminNotiModal').style.display = 'flex'; document.getElementById('adminNotiText').value = ''; }
-        
         function postNotification() {
             const text = document.getElementById('adminNotiText').value.trim();
             if(!text) return;
@@ -560,6 +571,23 @@
             document.getElementById('notiDropdown').style.display = 'block';
         }
 
+        // Admin Xóa Thông báo khỏi Database
+        async function deleteNotification(notiId) {
+            if (confirm(currentLang === 'vi' ? 'Bạn có chắc chắn muốn XÓA VĨNH VIỄN thông báo này không?' : 'Are you sure you want to permanently delete this?')) {
+                if (useSupabase) {
+                    try {
+                        await supabaseClient.from('notifications').delete().eq('id', notiId);
+                        await loadNotifications(); // Tải lại danh sách từ DB
+                        showToast(currentLang === 'vi' ? 'Đã xóa thông báo!' : 'Notification deleted!');
+                    } catch (error) {
+                        showToast("Lỗi khi xóa thông báo!");
+                    }
+                }
+            }
+        }
+
+
+        // --- DỮ LIỆU MÔ PHỎNG ---
         async function loadData() {
             if (useSupabase) {
                 try {
@@ -726,11 +754,15 @@
 
         function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
         function handleEnter(e, action) { if (e.key === 'Enter' && action === 'login') login(); }
+        function openAdminNotiModal() { document.getElementById('adminNotiModal').style.display = 'flex'; document.getElementById('adminNotiText').value = ''; }
 
         let toastTimeout;
         function showToast(msg) {
-            const t = document.getElementById('toast'); t.innerText = msg; t.classList.add('show');
-            clearTimeout(toastTimeout); toastTimeout = setTimeout(() => t.classList.remove('show'), 3000);
+            const t = document.getElementById('toast'); 
+            t.innerHTML = msg; 
+            t.classList.add('show');
+            clearTimeout(toastTimeout); 
+            toastTimeout = setTimeout(() => t.classList.remove('show'), 4000); // Tăng thời gian hiển thị lên 4 giây
         }
 
         document.addEventListener('click', function(event) {
