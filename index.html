@@ -59,11 +59,19 @@
         .noti-header { padding: 12px 15px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.02); }
         .noti-header h4 { margin: 0; font-size: 1em; color: var(--primary); }
         .noti-body { max-height: 300px; overflow-y: auto; }
-        .noti-item { padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 0.9em; }
+        
+        /* Cập nhật style cho Notification item để chứa nút xóa */
+        .noti-item { padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 0.9em; position: relative; padding-right: 35px; }
         .noti-item:last-child { border-bottom: none; }
         .noti-item.unread { background: rgba(198, 40, 40, 0.05); border-left: 3px solid var(--primary); }
         [data-theme="dark"] .noti-item.unread { background: rgba(239, 83, 80, 0.1); }
         .noti-date { font-size: 0.8em; color: var(--text-light); margin-top: 5px; display: block; }
+        
+        /* Nút xóa thông báo (chỉ Admin) */
+        .btn-delete-noti { display: none; position: absolute; right: 10px; top: 12px; color: var(--danger); cursor: pointer; background: none; border: none; font-size: 1.1em; transition: 0.2s; }
+        .admin-mode .btn-delete-noti { display: block; }
+        .btn-delete-noti:hover { color: #a71d2a; transform: scale(1.1); }
+        
         .btn-post-noti { display: none; padding: 4px 8px; background: var(--success); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8em; }
         .admin-mode .btn-post-noti { display: block; }
 
@@ -159,16 +167,22 @@
         .feature-card h3 { color: var(--text-dark); margin-bottom: 10px; font-size: 1.3em; }
         .feature-card p { color: var(--text-light); line-height: 1.5; }
 
-        /* Contact Layout */
-        .contact-layout { display: flex; flex-wrap: wrap; gap: 30px; background: var(--bg-card); padding: 40px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
-        .contact-info, .idea-form { flex: 1; min-width: 300px; }
+        /* Contact & Buttons Layout */
+        .contact-layout { display: flex; flex-direction: column; gap: 30px; background: var(--bg-card); padding: 40px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
+        
         .contact-info h2, .idea-form h2 { color: var(--primary); margin-bottom: 20px; font-size: 1.8em; }
-        .contact-info p { color: var(--text-light); line-height: 1.6; margin-bottom: 25px; font-size: 1.1em; }
+        .contact-info p, .idea-form p { color: var(--text-light); line-height: 1.6; margin-bottom: 25px; font-size: 1.1em; }
+        
+        /* Cập nhật style cho các nút Zalo, Facebook, Form đồng bộ */
         .zalo-btn { display: inline-flex; align-items: center; gap: 15px; background: #0068ff; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2em; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,104,255,0.4); }
         .zalo-btn:hover { background: #0054cc; transform: scale(1.05); }
-.facebook-btn { display: inline-flex; align-items: center; gap: 15px; background: #1877F2; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2em; transition: 0.3s; box-shadow: 0 4px 15px rgba(24,119,242,0.4); }
-.facebook-btn:hover { background: #166fe5; transform: scale(1.05); color: white; }
-.contact-buttons-group { display: flex; flex-direction: column; gap: 15px; align-items: flex-start; }
+        
+        .facebook-btn { display: inline-flex; align-items: center; gap: 15px; background: #1877F2; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2em; transition: 0.3s; box-shadow: 0 4px 15px rgba(24,119,242,0.4); }
+        .facebook-btn:hover { background: #166fe5; transform: scale(1.05); color: white; }
+        
+        .form-btn { display: inline-flex; align-items: center; gap: 15px; background: #d93025; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2em; transition: 0.3s; box-shadow: 0 4px 15px rgba(217,48,37,0.4); border: none; cursor: pointer; }
+        .form-btn:hover { background: #b3261d; transform: scale(1.05); color: white; }
+
         /* Database Setup text */
         .db-status { background-color: rgba(239, 83, 80, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 15px; font-size: 0.8em; font-weight: bold; display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; }
         .db-status.connected { background-color: rgba(40, 167, 69, 0.1); color: var(--success); }
@@ -296,25 +310,44 @@
 
     <div id="contactTab" class="container tab-content">
         <div class="contact-layout">
+            <!-- PHẦN THÔNG TIN LIÊN HỆ -->
             <div class="contact-info">
-                <h2 class="lang-text" data-vi="<i class='fa-solid fa-address-book'></i> Thông tin liên hệ" data-en="<i class='fa-solid fa-address-book'></i> Contact Info"><i class="fa-solid fa-address-book"></i> Thông tin liên hệ</h2>
-                <p class="lang-text" data-vi="Nếu bạn có bất kỳ câu hỏi nào về hệ thống, hoặc cần hỗ trợ kỹ thuật, hãy liên hệ trực tiếp với chúng tôi." data-en="If you have any questions or need technical support, please contact us directly.">Nếu bạn có bất kỳ câu hỏi nào về hệ thống mô phỏng, hoặc cần hỗ trợ kỹ thuật, hãy liên hệ trực tiếp với đội ngũ quản trị viên của chúng tôi.</p>
+                <h2 class="lang-text" data-vi="<i class='fa-solid fa-address-book'></i> Thông tin liên hệ" data-en="<i class='fa-solid fa-address-book'></i> Contact Info">
+                    <i class="fa-solid fa-address-book"></i> Thông tin liên hệ
+                </h2>
+                <p class="lang-text" data-vi="Nếu bạn có bất kỳ câu hỏi nào về hệ thống, hoặc cần hỗ trợ kỹ thuật, hãy liên hệ trực tiếp với chúng tôi." data-en="If you have any questions or need technical support, please contact us directly.">
+                    Nếu bạn có bất kỳ câu hỏi nào về hệ thống mô phỏng, hoặc cần hỗ trợ kỹ thuật, hãy liên hệ trực tiếp với đội ngũ quản trị viên của chúng tôi.
+                </p>
                 <br>
-                <div class="contact-buttons-group">
+                <!-- Nhóm nút liên hệ xếp dọc -->
+                <div style="display: flex; flex-direction: column; gap: 15px; align-items: flex-start;">
                     <a href="https://zalo.me/0819161835" target="_blank" class="zalo-btn">
                         <i class="fa-solid fa-comment-dots"></i> Chat Zalo: 0819161835
                     </a>
-                    <a href="https://zalo.me/0363070059" target="_blank" class="facebook-btn">
+                    <a href="https://zalo.me/0363070059" target="_blank" class="zalo-btn">
                          <i class="fa-solid fa-comment-dots"></i> Chat Zalo: 0363070059
+                    </a>
+                    <a href="https://www.facebook.com/thuvieneduai" target="_blank" class="facebook-btn">
+                        <i class="fa-brands fa-facebook"></i> Liên hệ qua Facebook
                     </a>
                 </div>
             </div>
-            <div class="idea-form">
-                <h2 class="lang-text" data-vi="<i class='fa-solid fa-lightbulb'></i> Đề xuất ý tưởng" data-en="<i class='fa-solid fa-lightbulb'></i> Suggest Ideas"><i class="fa-solid fa-lightbulb"></i> Đề xuất ý tưởng</h2>
-                <p class="lang-text" data-vi="Bạn muốn có thêm mô phỏng về chủ đề nào? Hãy cho chúng tôi biết!" data-en="What topics do you want more simulations on? Let us know!" style="color: var(--text-light); margin-bottom: 25px;">Bạn muốn có thêm mô phỏng về chủ đề nào? Hãy cho chúng tôi biết thông qua biểu mẫu đề xuất nhé!</p>
-                <a href="https://fomr.io/s/wSsnfUG4dL" target="_blank" class="btn-submit lang-text" data-vi="<i class='fa-solid fa-pen-to-square'></i> Điền biểu mẫu đề xuất" data-en="<i class='fa-solid fa-pen-to-square'></i> Fill Suggestion Form" style="display: inline-block; text-align: center; text-decoration: none; padding: 15px 30px; font-size: 1.1em; border-radius: 50px; background: var(--primary);">
-                    <i class="fa-solid fa-pen-to-square"></i> Điền biểu mẫu đề xuất
-                </a>
+
+            <!-- PHẦN ĐỀ XUẤT Ý TƯỞNG -->
+            <div class="idea-form" style="margin-top: 10px;">
+                <h2 class="lang-text" data-vi="<i class='fa-solid fa-lightbulb'></i> Đề xuất ý tưởng" data-en="<i class='fa-solid fa-lightbulb'></i> Suggest Ideas">
+                    <i class="fa-solid fa-lightbulb"></i> Đề xuất ý tưởng
+                </h2>
+                <p class="lang-text" data-vi="Bạn muốn có thêm mô phỏng về chủ đề nào? Hãy cho chúng tôi biết!" data-en="What topics do you want more simulations on? Let us know!">
+                    Bạn muốn có thêm mô phỏng về chủ đề nào? Hãy cho chúng tôi biết thông qua biểu mẫu đề xuất nhé!
+                </p>
+                <br>
+                <!-- Nút Form bo góc xếp dọc giống Zalo/Facebook -->
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <a href="https://fomr.io/s/wSsnfUG4dL" target="_blank" class="form-btn">
+                        <i class="fa-solid fa-pen-to-square"></i> Điền biểu mẫu đề xuất
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -389,7 +422,7 @@
     <div id="toast">Thông báo ở đây</div>
 
     <script>
-        // Cấu Hình Supabase (Giữ nguyên của bạn)
+        // Cấu Hình Supabase
         const SUPABASE_URL = "https://auuvwjqufmavvqomolps.supabase.co"; 
         const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1dXZ3anF1Zm1hdnZxb21vbHBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODY4NTAsImV4cCI6MjA5ODU2Mjg1MH0.at6prrsEFS4Trb9GV9a-ieHb-StAYnqthRKPWq2eIAU";
         
@@ -403,7 +436,6 @@
             { id: 3, name: 'Tế bào thần kinh', categories: ['Sinh Học'], link: 'https://phet.colorado.edu/vi/simulations/neuron', image: 'https://phet.colorado.edu/sims/html/neuron/latest/neuron-600.png' }
         ];
 
-        // --- CÁC TÍNH NĂNG MỚI ---
         let currentLang = localStorage.getItem('edu_lang') || 'vi';
         let currentTheme = localStorage.getItem('edu_theme') || 'light';
         let notifications = JSON.parse(localStorage.getItem('edu_notifications')) || [];
@@ -412,7 +444,6 @@
             applyTheme();
             applyLang();
             renderNotifications();
-            updateStatusUI();
             await loadData();
             renderCards();
         }
@@ -431,7 +462,6 @@
             });
             document.getElementById('langLabel').innerText = currentLang.toUpperCase();
             
-            // Đổi placeholder tìm kiếm
             const searchInput = document.getElementById('searchInput');
             searchInput.placeholder = currentLang === 'vi' ? 'Tìm kiếm mô phỏng...' : 'Search simulations...';
         }
@@ -469,12 +499,15 @@
             if (notifications.length === 0) {
                 list.innerHTML = `<div style="padding: 20px; text-align:center; color:#999;">${currentLang === 'vi' ? 'Chưa có thông báo nào.' : 'No notifications yet.'}</div>`;
             } else {
-                notifications.forEach(noti => {
+                notifications.forEach((noti, index) => {
                     if (!noti.read) unreadCount++;
                     list.innerHTML += `
                         <div class="noti-item ${!noti.read ? 'unread' : ''}">
                             <div>${noti.text}</div>
                             <span class="noti-date">${noti.date}</span>
+                            <button class="btn-delete-noti" onclick="deleteNotification(${index}); event.stopPropagation();" title="Xóa thông báo này">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
                         </div>
                     `;
                 });
@@ -485,6 +518,16 @@
                 badge.style.display = 'block';
             } else {
                 badge.style.display = 'none';
+            }
+        }
+        
+        // TÍNH NĂNG MỚI: Xóa thông báo (Chỉ Admin)
+        function deleteNotification(index) {
+            if (confirm(currentLang === 'vi' ? 'Bạn có chắc chắn muốn xóa thông báo này?' : 'Are you sure you want to delete this notification?')) {
+                notifications.splice(index, 1); 
+                localStorage.setItem('edu_notifications', JSON.stringify(notifications));
+                renderNotifications();
+                showToast(currentLang === 'vi' ? 'Đã xóa thông báo!' : 'Notification deleted!');
             }
         }
 
@@ -499,8 +542,9 @@
 
         function pushNotification(text) {
             const newNoti = { text: text, date: new Date().toLocaleString('vi-VN'), read: false };
-            notifications.unshift(newNoti); // Thêm lên đầu
-            if(notifications.length > 20) notifications.pop(); // Giữ tối đa 20 thông báo
+            notifications.unshift(newNoti);
+            // Giới hạn 15 thông báo theo yêu cầu
+            if(notifications.length > 15) notifications.pop(); 
             localStorage.setItem('edu_notifications', JSON.stringify(notifications));
             renderNotifications();
             showToast(currentLang === 'vi' ? 'Có thông báo mới!' : 'New notification!');
@@ -513,12 +557,7 @@
             if(!text) return;
             pushNotification(text);
             closeModal('adminNotiModal');
-            document.getElementById('notiDropdown').style.display = 'block'; // Mở panel xem thành quả
-        }
-
-        // --- CÁC HÀM CŨ ĐÃ ĐƯỢC CẢI TIẾN ---
-        function updateStatusUI() {
-            // Giữ nguyên logic UI
+            document.getElementById('notiDropdown').style.display = 'block';
         }
 
         async function loadData() {
@@ -668,7 +707,6 @@
                     localStorage.setItem('phet_simulations', JSON.stringify(simulations));
                 }
 
-                // Đẩy thông báo tự động khi thêm mới thành công!
                 if (!id) {
                     pushNotification(`🚀 Hệ thống vừa cập nhật mô phỏng mới: <b>${name}</b>. Hãy xem ngay!`);
                 }
@@ -695,7 +733,6 @@
             clearTimeout(toastTimeout); toastTimeout = setTimeout(() => t.classList.remove('show'), 3000);
         }
 
-        // Đóng dropdown khi click ra ngoài
         document.addEventListener('click', function(event) {
             const panel = document.getElementById('notiDropdown');
             const wrapper = document.querySelector('.noti-wrapper');
